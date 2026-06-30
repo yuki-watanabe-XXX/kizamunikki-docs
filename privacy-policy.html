@@ -13,61 +13,88 @@
     th { background: #f5f5f5; }
     .muted { color: #666; font-size: 0.9rem; }
     code { font-size: 0.9em; }
+    a { color: #0d9488; }
+    ul { padding-left: 1.2rem; }
   </style>
 </head>
 <body>
   <h1>プライバシーポリシー</h1>
   <p><strong>刻む日記</strong></p>
-  <p class="muted">最終更新日: 2026年6月11日</p>
+  <p class="muted">最終更新日: 2026年6月30日</p>
 
   <h2>1. はじめに</h2>
   <p>本アプリは、ユーザーのログと日記を記録するツールです。運営者は、本アプリを通じてユーザーの個人情報を収集・販売・共有しません。</p>
 
-  <h2>2. 収集する情報</h2>
-  <p>本アプリは<strong>アカウント登録を必要としません</strong>。</p>
-  <p>端末内に保存されるデータは次のとおりです。</p>
+  <h2>2. 端末内に保存されるデータ</h2>
+  <p>本アプリは<strong>アカウント登録を必要としません</strong>。運営者のサーバーへデータを送ることもありません。</p>
+  <p>ユーザーが入力・設定した内容は、次のとおり端末内（および後述の iCloud / Apple Watch 連携の範囲）に保存されます。</p>
   <table>
     <tr><th>データ</th><th>用途</th><th>保存場所</th></tr>
-    <tr><td>ログ（時刻・本文）</td><td>表示・編集・共有</td><td>端末内（SwiftData）。iCloud 同期オン時はユーザーの iCloud プライベート領域（CloudKit）</td></tr>
-    <tr><td>日記テキスト</td><td>表示・編集</td><td>端末内（SwiftData）。iCloud 同期オン時はユーザーの iCloud プライベート領域（CloudKit）</td></tr>
-    <tr><td>アプリ設定（外観・通知スケジュール・アクセントカラーなど）</td><td>機能提供</td><td>端末内（UserDefaults / App Group）。通知スケジュールの一部は iCloud キー値ストアで端末間同期</td></tr>
-    <tr><td>「この端末でリマインダーを受け取る」設定</td><td>端末ごとの通知配信</td><td>端末内のみ（同期しません）</td></tr>
+    <tr><td>ログ（時刻・本文）</td><td>表示・編集・検索・共有・エクスポート</td><td>端末内（SwiftData）。iCloud 同期が有効なときはユーザーの iCloud プライベート領域（CloudKit）</td></tr>
+    <tr><td>日記テキスト</td><td>表示・編集・検索・エクスポート</td><td>端末内（SwiftData）。iCloud 同期が有効なときはユーザーの iCloud プライベート領域（CloudKit）</td></tr>
+    <tr><td>外観・アクセントカラー・本文フォントなどの表示設定</td><td>機能提供</td><td>端末内（UserDefaults）。<strong>端末間では同期しません</strong></td></tr>
+    <tr><td>ログのリマインダー設定（オン/オフ・時刻・間隔・通知文言など）</td><td>ローカル通知のスケジュール</td><td>端末内（UserDefaults）。<strong>端末間では同期しません</strong></td></tr>
+    <tr><td>ログ入力補助（よく使う文言の候補）</td><td>入力欄の候補表示</td><td>端末内（App Group 内のファイル）。Apple Watch へは Watch 連携で配信</td></tr>
+    <tr><td>アプリロックの設定（オン/オフ・方式・生体認証の利用可否）</td><td>起動時・復帰時の保護</td><td>端末内（UserDefaults）</td></tr>
+    <tr><td>アプリロックのパスコード / パスワード</td><td>ロックの照合</td><td>端末内（Keychain にハッシュとして保存。平文は保存しません）</td></tr>
   </table>
-  <p>「日次まとめ」等で共有機能を使った場合、共有先（メール、メッセージ等）は<strong>ユーザー自身が選んだアプリ</strong>に渡されます。運営者のサーバーは経由しません。</p>
+  <p>ユーザーが「日次まとめ」・エクスポート・共有シートを使った場合、内容は<strong>ユーザー自身が選んだアプリ</strong>（メール、メッセージ、ファイル保存先など）に渡されます。運営者のサーバーは経由しません。</p>
 
   <h2>3. iCloud 同期</h2>
-  <p>本アプリは、同じ Apple ID でサインインした iPhone・iPad 間で、ログと日記を同期するために <strong>Apple の iCloud（CloudKit）</strong> を利用できます。iCloud 同期は<strong>全ユーザー無料</strong>です。</p>
+  <p>本アプリは、同じ Apple ID でサインインした iPhone・iPad 間で、<strong>ログと日記の内容</strong>を同期するために <strong>Apple の iCloud（CloudKit）</strong> を利用できます。</p>
   <ul>
     <li>同期データは<strong>ユーザーの iCloud アカウントのプライベートデータベース</strong>に保存されます</li>
     <li>運営者が iCloud 上のデータにアクセスすることはありません</li>
-    <li>iCloud をオフにした場合、データは端末内のみに保存されます</li>
-    <li>リマインダーの<strong>スケジュール設定</strong>（時刻・間隔・本文など）は iCloud キー値ストアで端末間同期されます。<strong>どの端末で通知を受け取るか</strong>は各端末でのみ保持されます</li>
+    <li>iCloud にサインインしていない、または CloudKit を利用できない場合は、データは当該端末内のみに保存されます</li>
+    <li><strong>同期されるのはログと日記のみです。</strong> 外観・通知・ログ入力補助・アプリロックなどの設定は<strong>端末ごと</strong>に保存され、他の端末へは同期されません</li>
   </ul>
 
-  <h2>4. 外部送信・トラッキング</h2>
+  <h2>4. Apple Watch との連携</h2>
+  <p>Apple Watch アプリと連携する場合、次のとおりです。</p>
+  <ul>
+    <li><strong>Watch → iPhone:</strong> Watch で入力したログは、Watch 連携（WatchConnectivity）を通じて iPhone 側のデータに取り込まれます</li>
+    <li><strong>iPhone → Watch:</strong> ログ入力補助の候補文言を Watch へ配信します。ログ一覧全体を Watch へ送ることはありません</li>
+    <li>Watch 上のデータも、最終的には iPhone 側の保存・iCloud 同期の対象となります</li>
+  </ul>
+
+  <h2>5. 外部送信・トラッキング</h2>
   <ul>
     <li>本アプリから<strong>運営者のサーバーへデータを送信しません</strong></li>
-    <li>iCloud 同期・App Store 購入処理は<strong>Apple のサービス</strong>が提供します</li>
+    <li>iCloud 同期・App Store の購入処理（将来の有料機能を含む）は<strong>Apple のサービス</strong>が提供します</li>
     <li><strong>第三者広告・分析 SDK は使用しません</strong></li>
     <li><strong>トラッキング</strong>（他社アプリ/サイトを跨いだ追跡）<strong>は行いません</strong></li>
   </ul>
 
-  <h2>5. 通知</h2>
-  <p>本アプリは<strong>ローカル通知</strong>を用いてログ入力のリマインダーを表示します。通知の許可は iOS の設定からいつでも変更できます。通知本文に入力した内容は、端末内のログとして保存されます。</p>
+  <h2>6. 通知</h2>
+  <p>本アプリは<strong>ローカル通知</strong>を用いてログ入力のリマインダーを表示します。通知の許可は iOS の設定からいつでも変更できます。通知に返信して入力した内容は、端末内のログとして保存されます。</p>
 
-  <h2>6. App Group とウィジェット</h2>
-  <p>ウィジェット表示のため、App Group（<code>group.app.kizamunikki</code>）経由でログ件数やアクセントカラー設定をアプリとウィジェット間で共有します。これらも端末内のみです（iCloud 同期時は CloudKit ストアをウィジェットも参照します）。</p>
+  <h2>7. App Group とウィジェット</h2>
+  <p>ウィジェット表示のため、App Group（<code>group.app.kizamunikki</code>）を利用します。</p>
+  <ul>
+    <li>今日のログ件数などの表示に、App Group 内の SwiftData ストア（ログ・日記）を参照します</li>
+    <li>アクセントカラーなど、ウィジェット表示に必要な設定を App Group 経由で共有します</li>
+    <li>ウィジェットからアプリを開く際のフラグなど、最小限の状態を App Group に保存することがあります</li>
+  </ul>
+  <p>これらは端末内のデータです。iCloud 同期が有効な場合、ログ・日記は CloudKit 経由で端末間同期されます。</p>
 
-  <h2>7. データの削除</h2>
-  <p>アプリを端末から削除すると、原則として本アプリが端末内に保存したデータも削除されます。iCloud に同期したデータは、Apple ID の iCloud ストレージに残る場合があります。個別ログの削除はアプリ内の編集モードから行えます。</p>
+  <h2>8. アプリロック</h2>
+  <p>任意で Face ID / Touch ID / オプティック ID またはパスコード・パスワードによるロックを有効にできます。ロック用の秘密情報は Keychain に保存し、運営者は取得できません。ロックの有効/無効や方式の設定は端末内のみで、iCloud では同期しません。</p>
 
-  <h2>8. お子様</h2>
+  <h2>9. データの削除</h2>
+  <ul>
+    <li>個別のログは、アプリ内の編集・削除操作から削除できます</li>
+    <li>アプリを端末から削除すると、原則として当該端末に保存された本アプリのデータも削除されます</li>
+    <li>iCloud に同期したログ・日記は、Apple ID の iCloud ストレージに残る場合があります。iCloud 上のデータの管理は、Apple の提供する方法に従ってください</li>
+  </ul>
+
+  <h2>10. お子様</h2>
   <p>本アプリは特定の年齢を対象としていませんが、13歳未満の方が利用する場合は保護者の同意のもとでご利用ください。</p>
 
-  <h2>9. ポリシーの変更</h2>
+  <h2>11. ポリシーの変更</h2>
   <p>本ポリシーを変更する場合、本ページの更新日を改め、必要に応じてアプリ内で告知します。</p>
 
-  <h2>10. お問い合わせ</h2>
+  <h2>12. お問い合わせ</h2>
   <p><strong>連絡先:</strong> <a href="mailto:kizamunikki.support@gmail.com">kizamunikki.support@gmail.com</a></p>
+  <p><a href="support.html">サポート</a></p>
 </body>
 </html>
