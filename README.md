@@ -3,5 +3,6 @@
 **刻む日記**（iOS アプリ）の公開ドキュメント。GitHub Pages 用。
 
 - [プライバシーポリシー](privacy-policy.html)
+- [サポート](support.html)
 
 アプリ本体のソースは private リポジトリで管理しています。
