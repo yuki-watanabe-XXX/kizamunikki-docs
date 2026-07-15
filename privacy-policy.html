@@ -34,7 +34,6 @@
     <tr><td>日記テキスト</td><td>表示・編集・検索・エクスポート</td><td>端末内（SwiftData）。iCloud 同期が有効なときはユーザーの iCloud プライベート領域（CloudKit）</td></tr>
     <tr><td>外観・アクセントカラー・本文フォントなどの表示設定</td><td>機能提供</td><td>端末内（UserDefaults）。<strong>端末間では同期しません</strong></td></tr>
     <tr><td>ログのリマインダー設定（オン/オフ・時刻・間隔・通知文言など）</td><td>ローカル通知のスケジュール</td><td>端末内（UserDefaults）。<strong>端末間では同期しません</strong></td></tr>
-    <tr><td>ログ入力補助（よく使う文言の候補）</td><td>入力欄の候補表示</td><td>端末内（App Group 内のファイル）。Apple Watch へは Watch 連携で配信</td></tr>
     <tr><td>アプリロックの設定（オン/オフ・方式・生体認証の利用可否）</td><td>起動時・復帰時の保護</td><td>端末内（UserDefaults）</td></tr>
     <tr><td>アプリロックのパスコード / パスワード</td><td>ロックの照合</td><td>端末内（Keychain にハッシュとして保存。平文は保存しません）</td></tr>
   </table>
@@ -46,14 +45,13 @@
     <li>同期データは<strong>ユーザーの iCloud アカウントのプライベートデータベース</strong>に保存されます</li>
     <li>運営者が iCloud 上のデータにアクセスすることはありません</li>
     <li>iCloud にサインインしていない、または CloudKit を利用できない場合は、データは当該端末内のみに保存されます</li>
-    <li><strong>同期されるのはログと日記のみです。</strong> 外観・通知・ログ入力補助・アプリロックなどの設定は<strong>端末ごと</strong>に保存され、他の端末へは同期されません</li>
+    <li><strong>同期されるのはログと日記のみです。</strong> 外観・通知・アプリロックなどの設定は<strong>端末ごと</strong>に保存され、他の端末へは同期されません</li>
   </ul>
 
   <h2>4. Apple Watch との連携</h2>
   <p>Apple Watch アプリと連携する場合、次のとおりです。</p>
   <ul>
     <li><strong>Watch → iPhone:</strong> Watch で入力したログは、Watch 連携（WatchConnectivity）を通じて iPhone 側のデータに取り込まれます</li>
-    <li><strong>iPhone → Watch:</strong> ログ入力補助の候補文言を Watch へ配信します。ログ一覧全体を Watch へ送ることはありません</li>
     <li>Watch 上のデータも、最終的には iPhone 側の保存・iCloud 同期の対象となります</li>
   </ul>
 
